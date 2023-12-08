@@ -7,6 +7,32 @@
   pointer-events: none;
 }
 
+.full-height-background {
+  height: 100vh;
+  background-image: url("https://cdn.drivek.com/configurator-imgs/cars/it/800/FERRARI/ROMA/39433_COUPE-2-PORTE/ferrari-roma-side-view-2.jpeg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bottom-button {
+  position: absolute;
+  bottom: 100px;
+  left: 40%;
+  transform: translateX(-50%);
+  width: 10%;
+}
+
+.bottom-button2 {
+  position: absolute;
+  bottom: 100px;
+  left: 60%;
+  transform: translateX(-50%);
+  width: 10%;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
