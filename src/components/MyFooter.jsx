@@ -43,7 +43,7 @@ const MyFooter = () => {
         </Row>
         <hr />
         <footer className="footer">
-          <p>&copy; 2023 Il Tuo Nome</p>
+          <p>&copy; 2023 Maghi del noleggio</p>
         </footer>
       </Container>
     </>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, Image, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const MyHome = () => {
