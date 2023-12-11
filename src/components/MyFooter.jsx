@@ -3,7 +3,9 @@ import { Col, Container, Row } from "react-bootstrap";
 const MyFooter = () => {
   return (
     <>
-      <Container className="pt-2">
+      <div className="pt-5"></div>
+      <Container>
+        <hr />
         <Row>
           <Col>
             Scopri e acquista
