@@ -19,7 +19,6 @@ const ParcoMacchine = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        console.log(data.content);
         setData(data.content);
       }
     } catch (error) {
@@ -39,7 +38,6 @@ const ParcoMacchine = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        console.log(data);
         setFerrari(data);
       }
     } catch (error) {
@@ -59,7 +57,6 @@ const ParcoMacchine = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        console.log(data);
         setLambo(data);
       }
     } catch (error) {

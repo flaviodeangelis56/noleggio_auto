@@ -6,6 +6,7 @@ import MyHome from "./components/MyHome";
 import MyFooter from "./components/MyFooter";
 import ParcoMacchine from "./components/ParcoMacchine";
 import VehicleDetails from "./components/VehicleDetails";
+import GestionePM from "./components/GestionePM";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<MyHome />} />
         <Route path="/parcoMacchine" element={<ParcoMacchine />} />
         <Route path="/vehicleDetails/:Id" element={<VehicleDetails />} />
+        <Route path="/gestionePM" element={<GestionePM />} />
       </Routes>
       <MyFooter />
     </BrowserRouter>

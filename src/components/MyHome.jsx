@@ -109,9 +109,11 @@ const MyHome = () => {
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="danger" type="submit" onClick={handleClose}>
-                Log In
-              </Button>
+              <Link to={"/parcoMacchine"}>
+                <Button variant="danger" type="submit" onClick={handleClose}>
+                  Log In
+                </Button>
+              </Link>
             </Modal.Footer>
           </Form>
         </Modal>
@@ -192,9 +194,11 @@ const MyHome = () => {
               <Button variant="secondary" onClick={handleClose2}>
                 Close
               </Button>
-              <Button variant="danger" type="submit" onClick={handleClose2}>
-                Register
-              </Button>
+              <Link to={"/parcoMacchine"}>
+                <Button variant="danger" type="submit" onClick={handleClose2}>
+                  Register
+                </Button>
+              </Link>
             </Modal.Footer>
           </Form>
         </Modal>
