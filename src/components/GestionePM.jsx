@@ -9,6 +9,18 @@ const GestionePM = () => {
   const [show3, setShow3] = useState(false);
   const [autoId, setAutoId] = useState();
   const [marca, setMarca] = useState();
+  const [marcaAuto, setMarcaAuto] = useState();
+  const [nome, setNome] = useState();
+  const [imgUrl, setImgUrl] = useState();
+  const [cilindrata, setCilindrata] = useState();
+  const [lung, setLung] = useState();
+  const [larg, setLarg] = useState();
+  const [alt, setAlt] = useState();
+  const [passo, setPasso] = useState();
+  const [massa, setMassa] = useState();
+  const [consumo, setConsumo] = useState();
+  const [anno, setAnno] = useState();
+  const [maxP, setMaxP] = useState();
 
   const handleClose2 = () => setShow2(false);
   const handleShow2 = () => setShow2(true);
@@ -88,6 +100,49 @@ const GestionePM = () => {
     }
   };
 
+  const CreaAuto = async e => {
+    e.preventDefault();
+    const aut = JSON.parse(localStorage.getItem("token"));
+    const annoPars = parseInt(anno);
+    const cilindrataPars = parseInt(cilindrata);
+    const maxPars = parseInt(maxP);
+    const lungPars = parseFloat(lung);
+    const largPars = parseFloat(larg);
+    const altPars = parseFloat(lung);
+    const passoPars = parseFloat(lung);
+    const massaPars = parseInt(lung);
+
+    try {
+      const resp = await fetch(`http://localhost:3001/vehicle`, {
+        method: "POST",
+        body: JSON.stringify({
+          nome: nome,
+          marca: marca,
+          imgUrl: imgUrl,
+          annoProduzione: annoPars,
+          cilindrata: cilindrataPars,
+          maxPower: maxPars,
+          lunghezza: lungPars,
+          larghezza: largPars,
+          altezza: altPars,
+          passo: passoPars,
+          massa: massaPars,
+          ConsumiMisto: consumo,
+        }),
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${aut.accessToken}`,
+        },
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        setData(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAllAuto();
   }, []);
@@ -95,12 +150,18 @@ const GestionePM = () => {
   return (
     <>
       <h2 className="ms-3 pb-0 mb-0 mt-4 text-center">Tutte le auto</h2>
-      <Button variant="danger" onClick={handleShow2} className=" btn-lg">
-        Aggiungi un auto
-      </Button>
-      <Button variant="danger" onClick={handleShow3} className=" btn-lg">
-        Cerca auto per marca
-      </Button>
+      <Row>
+        <Col className="text-center">
+          <Button variant="danger" onClick={handleShow2} className=" btn-lg">
+            Aggiungi un auto
+          </Button>
+        </Col>
+        <Col className="text-center">
+          <Button variant="danger" onClick={handleShow3} className=" btn-lg">
+            Cerca auto per marca
+          </Button>
+        </Col>
+      </Row>
       <Row xs={1} md={2} className="g-4 ms-2 me-2 mt-1">
         {data.length > 0
           ? data.map(auto => (
@@ -114,7 +175,7 @@ const GestionePM = () => {
                       <Card.Title>
                         {auto.marca} {auto.name}
                       </Card.Title>
-                      <Card.Text>
+                      <Card.Text className="text-center">
                         <Button variant="danger" onClick={() => handleClick(auto.id)}>
                           Delete Car
                         </Button>
@@ -144,19 +205,176 @@ const GestionePM = () => {
       </Modal>
       <Modal show={show2} onHide={handleClose2}>
         <Modal.Header closeButton>
-          <Modal.Title>Register</Modal.Title>
+          <Modal.Title>Aggiungi un auto</Modal.Title>
         </Modal.Header>
-        <Modal.Body></Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose2}>
-            Close
-          </Button>
-          <Link to={"/parcoMacchine"}>
-            <Button variant="danger" type="submit" onClick={handleClose2}>
-              Register
+        <Form onSubmit={CreaAuto}>
+          <Modal.Body>
+            <Form.Group className="mt-3">
+              <Form.Label>Marca</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="marca"
+                onChange={e => {
+                  setMarcaAuto(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Nome</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="nome"
+                onChange={e => {
+                  setNome(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Url dell'imaggine</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="URL"
+                onChange={e => {
+                  setImgUrl(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Anno di produzione</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="anno"
+                onChange={e => {
+                  setAnno(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Cilindrata</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="cilindrata"
+                onChange={e => {
+                  setCilindrata(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Potenza massima</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="potenza massima"
+                onChange={e => {
+                  setMaxP(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Lunghezza</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="lunghezza"
+                onChange={e => {
+                  setLung(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Larghezza</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Larghezza"
+                onChange={e => {
+                  setLarg(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Altezza</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="altezza"
+                onChange={e => {
+                  setAlt(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Passo</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="passo"
+                onChange={e => {
+                  setPasso(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Massa</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="massa"
+                onChange={e => {
+                  setMassa(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Consumo sul misto</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="consumo"
+                onChange={e => {
+                  setConsumo(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose2}>
+              Close
             </Button>
-          </Link>
-        </Modal.Footer>
+            <Button variant="danger" type="submit" onClick={handleClose2}>
+              Crea
+            </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
       <Modal show={show3} onHide={handleClose3}>
         <Modal.Header closeButton>

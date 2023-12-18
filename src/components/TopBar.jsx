@@ -12,7 +12,6 @@ const TopBar = ({ location }) => {
     const token = aut.accessToken;
     const decodedToken = jwtDecode(token);
     const userId = decodedToken.sub;
-    console.log(userId);
     try {
       const resp = await fetch(`http://localhost:3001/user/byId/` + userId, {
         method: "GET",
@@ -23,7 +22,6 @@ const TopBar = ({ location }) => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        console.log(data);
         setUser(data);
       }
     } catch (error) {

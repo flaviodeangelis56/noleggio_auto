@@ -85,10 +85,7 @@ const ParcoMacchine = () => {
                     <Card.Title>
                       {auto.marca} {auto.name}
                     </Card.Title>
-                    <Card.Text>
-                      This is a longer card with supporting text below as a natural lead-in to additional content. This
-                      content is a little bit longer.
-                    </Card.Text>
+                    <Card.Text>{auto.descrizione}</Card.Text>
                   </Card.Body>
                 </Card>
               </Col>
