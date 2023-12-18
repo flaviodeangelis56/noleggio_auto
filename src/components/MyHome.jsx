@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MyHome = () => {
   const [show, setShow] = useState(false);
@@ -10,6 +10,7 @@ const MyHome = () => {
   const [username, setUsername] = useState();
   const [nome, setNome] = useState();
   const [cognome, setCognome] = useState();
+  const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -18,6 +19,7 @@ const MyHome = () => {
   const handleShow2 = () => setShow2(true);
 
   const login = async e => {
+    console.log("sono qui");
     e.preventDefault();
     try {
       const resp = await fetch(`http://localhost:3001/auth/login`, {
@@ -29,9 +31,14 @@ const MyHome = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
+        console.log(email);
+        console.log(password);
+        console.log(data);
+        sessionStorage.setItem("token", JSON.stringify(data));
         localStorage.setItem("token", JSON.stringify(data));
         setEmail("");
         setPassword("");
+        navigate("/parcoMacchine");
       }
     } catch (error) {
       console.log(error);
@@ -62,6 +69,10 @@ const MyHome = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    localStorage.removeItem("token");
+  }, []);
   return (
     <>
       <div className="full-height-background">
@@ -69,7 +80,7 @@ const MyHome = () => {
           Log In
         </Button>
         <Button variant="danger" onClick={handleShow2} className="bottom-button2 btn-lg">
-          Sing Up
+          Sign Up
         </Button>
 
         <Modal show={show} onHide={handleClose}>
@@ -109,11 +120,9 @@ const MyHome = () => {
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Link to={"/parcoMacchine"}>
-                <Button variant="danger" type="submit" onClick={handleClose}>
-                  Log In
-                </Button>
-              </Link>
+              <Button variant="danger" type="submit" onClick={handleClose}>
+                Log In
+              </Button>
             </Modal.Footer>
           </Form>
         </Modal>
@@ -194,11 +203,9 @@ const MyHome = () => {
               <Button variant="secondary" onClick={handleClose2}>
                 Close
               </Button>
-              <Link to={"/parcoMacchine"}>
-                <Button variant="danger" type="submit" onClick={handleClose2}>
-                  Register
-                </Button>
-              </Link>
+              <Button variant="danger" type="submit" onClick={handleClose2}>
+                Register
+              </Button>
             </Modal.Footer>
           </Form>
         </Modal>
