@@ -21,6 +21,8 @@ const GestionePM = () => {
   const [consumo, setConsumo] = useState();
   const [anno, setAnno] = useState();
   const [maxP, setMaxP] = useState();
+  const [prezzo, setPrezzo] = useState();
+  const [desc, setDesc] = useState();
 
   const handleClose2 = () => setShow2(false);
   const handleShow2 = () => setShow2(true);
@@ -108,16 +110,16 @@ const GestionePM = () => {
     const maxPars = parseInt(maxP);
     const lungPars = parseFloat(lung);
     const largPars = parseFloat(larg);
-    const altPars = parseFloat(lung);
-    const passoPars = parseFloat(lung);
-    const massaPars = parseInt(lung);
+    const altPars = parseFloat(alt);
+    const passoPars = parseFloat(passo);
+    const massaPars = parseInt(massa);
 
     try {
       const resp = await fetch(`http://localhost:3001/vehicle`, {
         method: "POST",
         body: JSON.stringify({
           nome: nome,
-          marca: marca,
+          marca: marcaAuto,
           imgUrl: imgUrl,
           annoProduzione: annoPars,
           cilindrata: cilindrataPars,
@@ -128,6 +130,8 @@ const GestionePM = () => {
           passo: passoPars,
           massa: massaPars,
           ConsumiMisto: consumo,
+          prezzo: prezzo,
+          descrizione: desc,
         }),
         headers: {
           "content-type": "application/json",
@@ -360,6 +364,32 @@ const GestionePM = () => {
                 placeholder="consumo"
                 onChange={e => {
                   setConsumo(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Prezzo</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="prezzo"
+                onChange={e => {
+                  setPrezzo(e.target.value);
+                }}
+                style={{ boxShadow: "none" }}
+                className="input"
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Descrizione</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="descrizione"
+                onChange={e => {
+                  setDesc(e.target.value);
                 }}
                 style={{ boxShadow: "none" }}
                 className="input"

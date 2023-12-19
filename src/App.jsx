@@ -7,6 +7,7 @@ import MyFooter from "./components/MyFooter";
 import ParcoMacchine from "./components/ParcoMacchine";
 import VehicleDetails from "./components/VehicleDetails";
 import GestionePM from "./components/GestionePM";
+import MiePrenotazioni from "./components/MiePrenotazioni";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/parcoMacchine" element={<ParcoMacchine />} />
         <Route path="/vehicleDetails/:Id" element={<VehicleDetails />} />
         <Route path="/gestionePM" element={<GestionePM />} />
+        <Route path="/MiePrenotazioni" element={<MiePrenotazioni />} />
       </Routes>
       <MyFooter />
     </BrowserRouter>

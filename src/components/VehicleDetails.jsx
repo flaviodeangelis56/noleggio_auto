@@ -48,7 +48,6 @@ const VehicleDetails = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        console.log(data);
       }
     } catch (error) {
       console.log(error);

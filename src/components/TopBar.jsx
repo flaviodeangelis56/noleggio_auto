@@ -71,6 +71,7 @@ const TopBar = ({ location }) => {
                         <Nav.Link href="/parcoMacchine">Lamborghini</Nav.Link>
                         <Nav.Link href="/parcoMacchine">Bugatti</Nav.Link>
                         <Nav.Link href="/parcoMacchine">McLaren</Nav.Link>
+                        <Nav.Link href="/MiePrenotazioni">Le mie prenotazioni</Nav.Link>
                       </>
                     )}
                   </>
