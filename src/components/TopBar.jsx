@@ -50,8 +50,6 @@ const TopBar = ({ location }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/parcoMacchine">Parco Macchine</Nav.Link>
             {user ? (
               <>
                 {" "}
@@ -62,16 +60,19 @@ const TopBar = ({ location }) => {
                     {user.ruolo === "ADMIN" ? (
                       <>
                         <Nav.Link href="/gestionePM">Gestione Parco Macchine</Nav.Link>
-                        <Nav.Link href="/parcoMacchine">Gestione Utenti</Nav.Link>
-                        <Nav.Link href="/parcoMacchine">Gestione Prenotazioni</Nav.Link>
+                        <Nav.Link href="/gestioneUT">Gestione Utenti</Nav.Link>
+                        <Nav.Link href="/gestionePR">Gestione Prenotazioni</Nav.Link>
+                        <Nav.Link href="/">Esci</Nav.Link>
                       </>
                     ) : (
                       <>
-                        <Nav.Link href="/parcoMacchine">Ferrari</Nav.Link>
-                        <Nav.Link href="/parcoMacchine">Lamborghini</Nav.Link>
-                        <Nav.Link href="/parcoMacchine">Bugatti</Nav.Link>
-                        <Nav.Link href="/parcoMacchine">McLaren</Nav.Link>
+                        <Nav.Link href="/parcoMacchine">Parco Macchine</Nav.Link>
+                        <Nav.Link href="/ferrari">Ferrari</Nav.Link>
+                        <Nav.Link href="/lamborghini">Lamborghini</Nav.Link>
+                        <Nav.Link href="/bugatti">Bugatti</Nav.Link>
+                        <Nav.Link href="/mclaren">McLaren</Nav.Link>
                         <Nav.Link href="/MiePrenotazioni">Le mie prenotazioni</Nav.Link>
+                        <Nav.Link href="/">Esci</Nav.Link>
                       </>
                     )}
                   </>

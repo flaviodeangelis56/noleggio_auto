@@ -32,7 +32,11 @@ const GestionePM = () => {
 
   const handleClose = () => {
     setShow(false);
-    console.log(autoId);
+  };
+
+  const handleCloseAdd = () => {
+    setShow2(false);
+    CreaAuto();
   };
 
   const handleCloseDelate = () => {
@@ -57,7 +61,7 @@ const GestionePM = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        setData(data.content);
+        setData(data);
       }
     } catch (error) {
       console.log(error);
@@ -66,7 +70,7 @@ const GestionePM = () => {
   const eliminaAuto = async e => {
     const aut = JSON.parse(localStorage.getItem("token"));
     try {
-      const resp = await fetch(`http://localhost:3001/vehicle/` + autoId, {
+      const resp = await fetch(`http://localhost:3001/vehicle` + autoId, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
@@ -103,7 +107,6 @@ const GestionePM = () => {
   };
 
   const CreaAuto = async e => {
-    e.preventDefault();
     const aut = JSON.parse(localStorage.getItem("token"));
     const annoPars = parseInt(anno);
     const cilindrataPars = parseInt(cilindrata);
@@ -400,7 +403,13 @@ const GestionePM = () => {
             <Button variant="secondary" onClick={handleClose2}>
               Close
             </Button>
-            <Button variant="danger" type="submit" onClick={handleClose2}>
+            <Button
+              variant="danger"
+              type="submit"
+              onClick={() => {
+                handleCloseAdd();
+              }}
+            >
               Crea
             </Button>
           </Modal.Footer>

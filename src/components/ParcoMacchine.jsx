@@ -19,7 +19,8 @@ const ParcoMacchine = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        setData(data.content);
+        console.log(data.length);
+        setData(data);
       }
     } catch (error) {
       console.log(error);

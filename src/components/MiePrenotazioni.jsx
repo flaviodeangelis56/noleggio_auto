@@ -53,7 +53,6 @@ const MiePrenotazioni = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        console.log(data);
         handleClose3();
       }
     } catch (error) {
@@ -66,7 +65,7 @@ const MiePrenotazioni = () => {
   }, []);
   return (
     <>
-      <h2>Tutte le mie Prenotazioni</h2>
+      <h2 className="ms-3 pb-0 mb-0 mt-4 text-center">Tutte le mie prenotazioni</h2>
       <Row xs={1} md={2} className="g-4 ms-2 me-2 mt-1">
         {data && data.length > 0 ? (
           data.map(prenotazione => (
