@@ -45,6 +45,16 @@
   transform: translateX(-50%);
   width: 10%;
 }
+
+.footertext {
+  color: rgb(126, 126, 126);
+}
+
+.footertext:hover {
+  color: black;
+  text-decoration: underline;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

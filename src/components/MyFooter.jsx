@@ -8,37 +8,38 @@ const MyFooter = () => {
         <hr />
         <Row>
           <Col>
-            Scopri e acquista
-            <p className="mb-0">Store</p>
-            <p className="mb-0">Ferrari</p>
-            <p className="mb-0">Lamborghini</p>
-            <p className="mb-0">Bugatti</p>
-            <p className="mb-0">Porsche</p>
+            <h6>Scopri e acquista</h6>
+            <p className="mb-0 footertext">Store</p>
+            <p className="mb-0 footertext">Ferrari</p>
+            <p className="mb-0 footertext">Lamborghini</p>
+            <p className="mb-0 footertext">Bugatti</p>
+            <p className="mb-0 footertext">Porsche</p>
           </Col>
           <Col>
-            Account
-            <p className="mb-0">Gestisci il tuo account</p>
-            <p className="mb-0">Account noleggio auto</p>
-            <p className="mb-0">Noleggio.com</p>
+            <h6>Account</h6>
+            <p className="mb-0 footertext">Gestisci il tuo account</p>
+            <p className="mb-0 footertext">Account noleggio auto</p>
+            <p className="mb-0 footertext">Noleggio.com</p>
           </Col>
           <Col>
-            I maghi del noleggio store
-            <p className="mb-0">Trova uno store</p>
-            <p className="mb-0">Finanziamenti</p>
-            <p className="mb-0">Stato dell'ordine</p>
-            <p className="mb-0">Assistenza agli acquisti</p>
+            <h6>I maghi del noleggio store</h6>
+            <p className="mb-0 footertext">Trova uno store</p>
+            <p className="mb-0 footertext">Finanziamenti</p>
+            <p className="mb-0 footertext">Stato dell'ordine</p>
+            <p className="mb-0 footertext">Assistenza agli acquisti</p>
           </Col>
           <Col>
-            Business
-            <p className="mb-0">Maghi per il business</p>
-            <p className="mb-0">Acquisti per le aziende</p>
+            <h6>Business</h6>
+
+            <p className="mb-0 footertext">Maghi per il business</p>
+            <p className="mb-0 footertext">Acquisti per le aziende</p>
           </Col>
           <Col>
-            I nostri valori
-            <p className="mb-0">Accesibilità</p>
-            <p className="mb-0">Ambiente</p>
-            <p className="mb-0">Privacy</p>
-            <p className="mb-0">Responabilità dei fornitori</p>
+            <h6>I nostri valori</h6>
+            <p className="mb-0 footertext">Accesibilità</p>
+            <p className="mb-0 footertext">Ambiente</p>
+            <p className="mb-0 footertext">Privacy</p>
+            <p className="mb-0 footertext">Responabilità dei fornitori</p>
           </Col>
         </Row>
         <hr />

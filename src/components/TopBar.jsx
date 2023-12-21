@@ -59,19 +59,66 @@ const TopBar = ({ location }) => {
                   <>
                     {user.ruolo === "ADMIN" ? (
                       <>
-                        <Nav.Link href="/gestionePM">Gestione Parco Macchine</Nav.Link>
-                        <Nav.Link href="/gestioneUT">Gestione Utenti</Nav.Link>
-                        <Nav.Link href="/gestionePR">Gestione Prenotazioni</Nav.Link>
-                        <Nav.Link href="/">Esci</Nav.Link>
+                        <Nav.Link
+                          href="/gestionePM"
+                          className={navigate.pathname === "/gestionePM" ? "nav-link active" : "nav-link"}
+                        >
+                          Gestione Parco Macchine
+                        </Nav.Link>
+                        <Nav.Link
+                          href="/gestioneUT"
+                          className={navigate.pathname === "/gestioneUT" ? "nav-link active" : "nav-link"}
+                        >
+                          Gestione Utenti
+                        </Nav.Link>
+                        <Nav.Link
+                          href="/gestionePR"
+                          className={navigate.pathname === "/gestionePR" ? "nav-link active" : "nav-link"}
+                        >
+                          Gestione Prenotazioni
+                        </Nav.Link>
+                        <Nav.Link href="/" className={navigate.pathname === "/" ? "nav-link active" : "nav-link"}>
+                          Esci
+                        </Nav.Link>
                       </>
                     ) : (
                       <>
-                        <Nav.Link href="/parcoMacchine">Parco Macchine</Nav.Link>
-                        <Nav.Link href="/ferrari">Ferrari</Nav.Link>
-                        <Nav.Link href="/lamborghini">Lamborghini</Nav.Link>
-                        <Nav.Link href="/bugatti">Bugatti</Nav.Link>
-                        <Nav.Link href="/mclaren">McLaren</Nav.Link>
-                        <Nav.Link href="/MiePrenotazioni">Le mie prenotazioni</Nav.Link>
+                        <Nav.Link
+                          href="/parcoMacchine"
+                          className={navigate.pathname === "/parcoMacchine" ? "nav-link active" : "nav-link"}
+                        >
+                          Parco Macchine
+                        </Nav.Link>
+                        <Nav.Link
+                          href="/ferrari"
+                          className={navigate.pathname === "/ferrari" ? "nav-link active" : "nav-link"}
+                        >
+                          Ferrari
+                        </Nav.Link>
+                        <Nav.Link
+                          href="/lamborghini"
+                          className={navigate.pathname === "/lamborghini" ? "nav-link active" : "nav-link"}
+                        >
+                          Lamborghini
+                        </Nav.Link>
+                        <Nav.Link
+                          href="/bugatti"
+                          className={navigate.pathname === "/bugatti" ? "nav-link active" : "nav-link"}
+                        >
+                          Bugatti
+                        </Nav.Link>
+                        <Nav.Link
+                          href="/mclaren"
+                          className={navigate.pathname === "/mclaren" ? "nav-link active" : "nav-link"}
+                        >
+                          McLaren
+                        </Nav.Link>
+                        <Nav.Link
+                          href="/MiePrenotazioni"
+                          className={navigate.pathname === "/MiePrenotazioni" ? "nav-link active" : "nav-link"}
+                        >
+                          Le mie prenotazioni
+                        </Nav.Link>
                         <Nav.Link href="/">Esci</Nav.Link>
                       </>
                     )}
