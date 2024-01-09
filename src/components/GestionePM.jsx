@@ -40,6 +40,7 @@ const GestionePM = () => {
   };
 
   const handleCloseDelate = () => {
+    console.log(autoId);
     setShow(false);
     eliminaAuto();
   };
@@ -70,7 +71,7 @@ const GestionePM = () => {
   const eliminaAuto = async e => {
     const aut = JSON.parse(localStorage.getItem("token"));
     try {
-      const resp = await fetch(`http://localhost:3001/vehicle` + autoId, {
+      const resp = await fetch(`http://localhost:3001/vehicle/` + autoId, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
@@ -152,12 +153,11 @@ const GestionePM = () => {
 
   useEffect(() => {
     getAllAuto();
-  }, []);
+  }, [data]);
 
   return (
     <>
-      <h2 className="ms-3 pb-0 mb-0 mt-4 text-center">Tutte le auto</h2>
-      <Row>
+      <Row className="mt-4">
         <Col className="text-center">
           <Button variant="danger" onClick={handleShow2} className=" btn-lg">
             Aggiungi un auto

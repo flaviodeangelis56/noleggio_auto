@@ -69,13 +69,13 @@ const TopBar = ({ location }) => {
                           href="/gestioneUT"
                           className={navigate.pathname === "/gestioneUT" ? "nav-link active" : "nav-link"}
                         >
-                          Gestione Utenti
+                          Lista Utenti
                         </Nav.Link>
                         <Nav.Link
                           href="/gestionePR"
                           className={navigate.pathname === "/gestionePR" ? "nav-link active" : "nav-link"}
                         >
-                          Gestione Prenotazioni
+                          Lista Prenotazioni
                         </Nav.Link>
                         <Nav.Link href="/" className={navigate.pathname === "/" ? "nav-link active" : "nav-link"}>
                           Esci

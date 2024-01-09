@@ -6,7 +6,31 @@ import { useParams } from "react-router-dom";
 const VehicleDetails = () => {
   const [car, setCar] = useState(null);
   const [show2, setShow2] = useState(false);
+  const [user, setUser] = useState();
   const params = useParams();
+
+  const getUserFromToken = async () => {
+    const aut = JSON.parse(localStorage.getItem("token"));
+    const token = aut.accessToken;
+    const decodedToken = jwtDecode(token);
+    const userId = decodedToken.sub;
+    try {
+      const resp = await fetch(`http://localhost:3001/user/byId/` + userId, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${aut.accessToken}`,
+        },
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        setUser(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    return null;
+  };
 
   const handleClose2 = () => setShow2(false);
   const handleShow2 = () => setShow2(true);
@@ -55,6 +79,7 @@ const VehicleDetails = () => {
   };
   useEffect(() => {
     getCar();
+    getUserFromToken();
   }, []);
   return (
     <>
@@ -110,17 +135,26 @@ const VehicleDetails = () => {
               </Col>
             </Row>
           </Container>
-          <Container className="d-flex justify-content-center align-items-center my-5">
-            {car.vehicleAvailability === "DISPONIBILE" ? (
-              <Button variant="success" type="submit" className="btn-lg" onClick={handleShow2}>
-                Prenota Ora
-              </Button>
-            ) : (
-              <Button variant="danger" type="submit" className="btn-lg">
-                Non Disponibile
-              </Button>
-            )}
-          </Container>
+          {user ? (
+            <>
+              {user.ruolo === "ADMIN" ? (
+                <Container className="d-flex justify-content-center align-items-center my-5"></Container>
+              ) : (
+                <Container className="d-flex justify-content-center align-items-center my-5">
+                  {car.vehicleAvailability === "DISPONIBILE" ? (
+                    <Button variant="success" type="submit" className="btn-lg" onClick={handleShow2}>
+                      Prenota Ora
+                    </Button>
+                  ) : (
+                    <Button variant="danger" type="submit" className="btn-lg">
+                      Non Disponibile
+                    </Button>
+                  )}
+                </Container>
+              )}
+            </>
+          ) : null}
+
           <Modal show={show2} onHide={handleClose2}>
             <Modal.Header closeButton>
               <Modal.Title>Prenota quest'auto</Modal.Title>
