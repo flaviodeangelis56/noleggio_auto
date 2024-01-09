@@ -82,7 +82,7 @@ const GestionePM = () => {
         setData(data.content);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.errorsList);
     }
   };
 

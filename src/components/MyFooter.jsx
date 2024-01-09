@@ -13,7 +13,7 @@ const MyFooter = () => {
             <p className="mb-0 footertext">Ferrari</p>
             <p className="mb-0 footertext">Lamborghini</p>
             <p className="mb-0 footertext">Bugatti</p>
-            <p className="mb-0 footertext">Porsche</p>
+            <p className="mb-0 footertext">McLaren</p>
           </Col>
           <Col>
             <h6>Account</h6>

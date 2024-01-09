@@ -86,7 +86,7 @@ const ParcoMacchine = () => {
                     <Card.Title>
                       {auto.marca} {auto.name}
                     </Card.Title>
-                    <Card.Text>{auto.descrizione}</Card.Text>
+                    <Card.Text className="texto-2-righe">{auto.descrizione}</Card.Text>
                   </Card.Body>
                 </Card>
               </Col>
@@ -106,7 +106,7 @@ const ParcoMacchine = () => {
                     <Card.Title>
                       {auto.marca} {auto.name}
                     </Card.Title>
-                    <Card.Text>{auto.descrizione}</Card.Text>
+                    <Card.Text className="texto-2-righe">{auto.descrizione}</Card.Text>
                   </Card.Body>
                 </Card>
               </Col>
@@ -126,7 +126,7 @@ const ParcoMacchine = () => {
                     <Card.Title>
                       {auto.marca} {auto.name}
                     </Card.Title>
-                    <Card.Text>{auto.descrizione}</Card.Text>
+                    <Card.Text className="texto-2-righe">{auto.descrizione}</Card.Text>
                   </Card.Body>
                 </Card>
               </Col>

@@ -75,7 +75,7 @@ const MyHome = () => {
   }, []);
   return (
     <>
-      <div className="full-height-background">
+      <div className="full-height-background imgShadow">
         <Button variant="danger" onClick={handleShow} className="bottom-button btn-lg">
           Log In
         </Button>

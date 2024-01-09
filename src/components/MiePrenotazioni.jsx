@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Modal, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MiePrenotazioni = () => {
   const [data, setData] = useState();
@@ -15,6 +15,11 @@ const MiePrenotazioni = () => {
     console.log(id);
     setReservationId(id);
     handleShow3();
+  };
+
+  const restituisciChiudi = () => {
+    restituisciAuto();
+    handleClose3();
   };
 
   const getPrenotazioni = async e => {
@@ -41,7 +46,6 @@ const MiePrenotazioni = () => {
   };
 
   const restituisciAuto = async e => {
-    e.preventDefault();
     const aut = JSON.parse(localStorage.getItem("token"));
     try {
       const resp = await fetch(`http://localhost:3001/reservation/rest/` + reservationId, {
@@ -53,7 +57,7 @@ const MiePrenotazioni = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        handleClose3();
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -103,7 +107,7 @@ const MiePrenotazioni = () => {
             </Col>
           ))
         ) : (
-          <h3>Non hai nessuna prenotazione</h3>
+          <h3 className="mx-auto pb-0 mb-0 mt-4 text-center">Non hai nessuna prenotazione</h3>
         )}
       </Row>
       <Modal show={show3} onHide={handleClose3}>
@@ -116,7 +120,7 @@ const MiePrenotazioni = () => {
           <Button variant="secondary" onClick={handleClose3}>
             Close
           </Button>
-          <Button variant="danger" type="submit" onClick={restituisciAuto}>
+          <Button variant="danger" type="submit" onClick={restituisciChiudi}>
             Restituisci
           </Button>
         </Modal.Footer>
